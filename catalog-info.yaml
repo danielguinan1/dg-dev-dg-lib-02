@@ -1,0 +1,66 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: dg-dev-dg-lib-02-service
+  description: 'The Liberty service for dg-dev-dg-lib-02 (Creates a Liberty getting started app)'
+  annotations:
+    argocd/app-name: dg-dev-dg-lib-02-dev
+    backstage.io/kubernetes-id: dg-dev-dg-lib-02
+    backstage.io/kubernetes-namespace: dg-dev
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: danielguinan1/dg-dev-dg-lib-02
+    janus-idp.io/tekton : dg-dev-dg-lib-02
+  labels:
+    backstage.io/kubernetes-id: dg-dev-dg-lib-02
+  tags:
+    - java
+    - liberty
+    - maven
+    - example
+  links:
+    - url: https://console-openshift-console.apps.66acf0a1cb466e001e539727.ocp.techzone.ibm.com/dev-pipelines/ns/dg-dev/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.66acf0a1cb466e001e539727.ocp.techzone.ibm.com/k8s/ns/dg-dev/deployments/dg-dev-dg-lib-02
+      title: Deployment
+      icon: web
+    - url: https://openliberty.io/docs/latest/overview.html
+      title: Open Liberty Docs
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/rhdhuser"
+  system: idp-system-dg-dev
+  providesApis:
+    - dg-dev-dg-lib-02-api
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: idp-system-dg-dev
+  tags:
+    - liberty
+    - app
+spec:
+  owner: "user:default/rhdhuser"
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: dg-dev-dg-lib-02-api
+  description: API surface exposed by the Liberty service
+  links:
+    - url: https://dg-dev-dg-lib-02-dg-dev.apps.66acf0a1cb466e001e539727.ocp.techzone.ibm.com/q/swagger-ui
+      title: Swagger UI
+      icon: web
+    - url: https://github.com/danielguinan1/dg-dev-dg-lib-02/-/blob/main/src/main/resources/META-INF/openapi.yaml
+      title: API Spec
+      icon: code
+spec:
+  type: openapi
+  lifecycle: production
+  owner: "user:default/rhdhuser"
+  system: idp-system-dg-dev
+  definition:
+    $text: ./src/main/resources/META-INF/openapi.yaml
