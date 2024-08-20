@@ -10,6 +10,8 @@ metadata:
     backstage.io/techdocs-ref: dir:.
     github.com/project-slug: danielguinan1/dg-dev-dg-lib-02
     janus-idp.io/tekton : dg-dev-dg-lib-02
+    argocd/app-selector: rht-gitops.com/ebanda-dev=simple-hello-world-service-a
+    argocd/instance-name: argocd # as defined in app-config-rhdh.yaml
   labels:
     backstage.io/kubernetes-id: dg-dev-dg-lib-02
   tags:
