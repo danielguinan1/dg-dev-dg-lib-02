@@ -6,10 +6,10 @@ on:
       - main
 
 env:
-  IMAGE_NAME: 
+  IMAGE_NAME: dg-dev-dg-lib-02
   IMAGE_TAGS: latest 
-  IMAGE_REGISTRY: quay.io
-  IMAGE_NAMESPACE: 
+  IMAGE_REGISTRY: ghcr.io
+  IMAGE_NAMESPACE: danielguinan1
   USERNAME: 
   PASSWORD: 
   GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -38,6 +38,6 @@ jobs:
       uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
       with:
         context: .
-        push: false
+        push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
