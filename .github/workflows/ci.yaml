@@ -12,6 +12,7 @@ env:
   IMAGE_NAMESPACE: 
   USERNAME: 
   PASSWORD: 
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build-and-push-image:
